@@ -1,0 +1,27 @@
+<svelte:head>
+  <title>demo app</title>
+  <script src="http://unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es5-umd.js"></script>
+</svelte:head>
+
+<script>
+  import Message from './message.svelte'
+  export let messages
+</script>
+
+<main>
+  <h1>Current messages</h1>
+  <div id="messages">
+    <ul>
+      {#each messages as message}
+        <li><Message message={message} /></li>
+      {/each}
+    </ul>
+  </div>
+
+  <turbo-frame id="new_message" target="_top">
+    <form action="/message" method="POST" style="margin-top: 40px">
+      <input name="content" type="text" />
+      <button type="submit">Create New Message</button>
+    </form>
+  </turbo-frame>
+</main>
