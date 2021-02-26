@@ -2,4 +2,6 @@
   export let message
 </script>
 
-<p>{message}</p>
+<turbo-frame id="message_frame_{message.id}">
+  <p>{message.text}</p>
+</turbo-frame>

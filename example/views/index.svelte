@@ -11,11 +11,9 @@
 <main>
   <h1>Current messages</h1>
   <div id="messages">
-    <ul>
-      {#each messages as message}
-        <li><Message message={message} /></li>
-      {/each}
-    </ul>
+    {#each messages as message}
+      <Message message={message} />
+    {/each}
   </div>
 
   <turbo-frame id="new_message" target="_top">
