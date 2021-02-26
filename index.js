@@ -5,10 +5,10 @@ const fp = require('fastify-plugin')
 const Piscina = require('piscina')
 
 async function hotwire (fastify, opts) {
-  const { dir } = opts
-  const pool = new Piscina({
-    filename: './worker.js'
-  })
+  const { templates } = opts
+  delete opts.templates
+
+  const pool = new Piscina(opts)
 
   fastify.decorateReply('render', render)
   fastify.decorateReply('turboStream', {
@@ -34,25 +34,15 @@ async function hotwire (fastify, opts) {
   })
 
   async function render (file, data) {
-    file = join(dir, file)
-    const { head, html, css } = await pool.runTask({ file, data })
-    // this.type('text/html; turbo-stream; charset=utf-8')
+    file = join(templates, file)
+    const html = await pool.runTask({ file, data, fragment: false })
     this.type('text/html; charset=utf-8')
-    this.send(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  ${head}
-  ${css.code}
-</head>
-<body>
-  ${html}
-</body>
-</html>`)
+    this.send(html)
     return this
   }
 
   async function turboSend (that, action, file, target, data) {
-    const { html } = await pool.runTask({ file: join(dir, file), data })
+    const html = await pool.runTask({ file: join(templates, file), data, fragment: true })
     that.type('text/vnd.turbo-stream.html; charset=utf-8')
     that.send(buildStream(action, target, html))
     return that

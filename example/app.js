@@ -9,7 +9,8 @@ const db = new Map()
 fastify.register(require('fastify-formbody'))
 
 fastify.register(require('..'), {
-  dir: join(__dirname, 'views')
+  templates: join(__dirname, 'views'),
+  filename: join(__dirname, 'worker.js')
 })
 
 fastify.get('/', async (req, reply) => {
@@ -28,6 +29,16 @@ fastify.post('/message', async (req, reply) => {
     'message.svelte',
     'messages',
     { message: { id, text: req.body.content } }
+  )
+})
+
+fastify.get('/message/:id/delete', async (req, reply) => {
+  const { id } = req.params
+  db.delete(id)
+  return reply.turboStream.remove(
+    'message.svelte',
+    `message_frame_${id}`,
+    { message: { id } }
   )
 })
 
