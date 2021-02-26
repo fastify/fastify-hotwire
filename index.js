@@ -14,21 +14,11 @@ async function hotwire (fastify, opts) {
   fastify.decorateReply('turboStream', {
     getter () {
       return {
-        append: async (file, target, data) => {
-          return turboSend(this, 'append', file, target, data)
-        },
-        prepend: async (file, target, data) => {
-          return turboSend(this, 'prepend', file, target, data)
-        },
-        replace: async (file, target, data) => {
-          return turboSend(this, 'replace', file, target, data)
-        },
-        update: async (file, target, data) => {
-          return turboSend(this, 'update', file, target, data)
-        },
-        remove: async (file, target, data) => {
-          return turboSend(this, 'remove', file, target, data)
-        }
+        append: (file, target, data) => turboSend(this, 'append', file, target, data),
+        prepend: (file, target, data) => turboSend(this, 'prepend', file, target, data),
+        replace: (file, target, data) => turboSend(this, 'replace', file, target, data),
+        update: (file, target, data) => turboSend(this, 'update', file, target, data),
+        remove: (file, target, data) => turboSend(this, 'remove', file, target, data)
       }
     }
   })
