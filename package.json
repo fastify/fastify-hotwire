@@ -26,6 +26,7 @@
     "fastify": "^3.12.0",
     "fastify-formbody": "^5.0.0",
     "fastify-websocket": "^3.0.0",
+    "pino-pretty": "^4.5.0",
     "shortid": "^2.2.16",
     "standard": "^16.0.3",
     "svelte": "^3.34.0",

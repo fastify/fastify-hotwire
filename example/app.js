@@ -1,14 +1,19 @@
 'use strict'
 
 const { join } = require('path')
-const fastify = require('fastify')()
+const fastify = require('fastify')({
+  logger: {
+    prettyPrint: true
+  }
+})
 const shortid = require('shortid')
 
 const db = new Map()
-const connections = new Set()
 
 fastify.register(require('fastify-formbody'))
-fastify.register(require('fastify-websocket'))
+fastify.register(require('fastify-websocket'), {
+  clientTracking: true
+})
 
 fastify.register(require('..'), {
   templates: join(__dirname, 'views'),
@@ -26,6 +31,7 @@ fastify.get('/', async (req, reply) => {
 fastify.post('/message', async (req, reply) => {
   const id = shortid.generate()
   db.set(id, req.body.content)
+  req.log.info(`creating new message with id ${id}`)
 
   const turboStream = await reply.turboSocket.append(
     'message.svelte',
@@ -33,8 +39,8 @@ fastify.post('/message', async (req, reply) => {
     { message: { id, text: req.body.content } }
   )
 
-  for (const connection of connections.values()) {
-    connection.socket.send(turboStream)
+  for (const socket of fastify.websocketServer.clients.values()) {
+    socket.send(turboStream)
   }
 
   return { acknowledged: true }
@@ -42,6 +48,7 @@ fastify.post('/message', async (req, reply) => {
 
 fastify.get('/message/:id/delete', async (req, reply) => {
   const { id } = req.params
+  req.log.info(`deleting message ${id}`)
   db.delete(id)
   return reply.turboStream.remove(
     'message.svelte',
@@ -51,10 +58,7 @@ fastify.get('/message/:id/delete', async (req, reply) => {
 })
 
 fastify.get('/ws', { websocket: true }, (connection, req) => {
-  connections.add(connection)
-  connection.socket.on('close', () => {
-    connections.delete(connection)
-  })
+  req.log.info('new websocket connection')
 })
 
 fastify.listen(3000, console.log)
