@@ -1,6 +1,6 @@
 <svelte:head>
   <title>demo app</title>
-  <script src="http://unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es5-umd.js"></script>
+  <script src="https://unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es5-umd.js"></script>
   <script>
     Turbo.connectStreamSource(new WebSocket(`ws://${document.location.host}/ws`))
   </script>
@@ -8,10 +8,15 @@
 
 <script>
   import Message from './message.svelte'
+  import Toast from './toast.svelte'
+
   export let messages
+  export let username
 </script>
 
 <main>
+  <p>Welcome, {username}</p>
+  <Toast />
   <h1>Current messages</h1>
   <div id="messages">
     {#each messages as message}

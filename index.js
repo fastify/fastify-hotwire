@@ -22,7 +22,7 @@ async function hotwire (fastify, opts) {
       }
     }
   })
-  fastify.decorateReply('turboSocket', {
+  fastify.decorateReply('turboGenerate', {
     getter () {
       return {
         append: (file, target, data) => turboSendSocket(this, 'append', file, target, data),
