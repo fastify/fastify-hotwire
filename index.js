@@ -65,4 +65,6 @@ function buildStream (action, target, content) {
 `
 }
 
-module.exports = fp(hotwire)
+module.exports = fp(hotwire, {
+  name: 'fastify-hotwire'
+})
