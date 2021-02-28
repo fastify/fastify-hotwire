@@ -1,5 +1,7 @@
 # fastify-hotwire
 
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)  [![Node CI](https://github.com/delvedor/fastify-hotwire/actions/workflows/node.js.yml/badge.svg)](https://github.com/delvedor/fastify-hotwire/actions/workflows/node.js.yml)
+
 Do you enjoy writing applications with the [hotwire](http://hotwire.dev) pattern?
 We got you covered!
 
@@ -37,7 +39,7 @@ module.exports = ({ file, data, fragment }) => {
 
 ## API
 
-### `reply.turboStream.*(filename, data)`
+### `reply.render(filename, data)`
 
 Gnerates the entire intial page, it calls the worker with `fragment: false`
 
