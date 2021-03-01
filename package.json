@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "demo": "node example/app.js",
-    "test": "standard && node test.js && tsd"
+    "test": "standard && tap test.js && tsd"
   },
   "repository": {
     "type": "git",
@@ -44,5 +44,13 @@
     "svelte": "^3.34.0",
     "tap": "^14.11.0",
     "tsd": "^0.14.0"
+  },
+  "tap": {
+    "esm": false,
+    "ts": false,
+    "jsx": false,
+    "flow": false,
+    "coverage": false,
+    "jobs-auto": true
   }
 }
