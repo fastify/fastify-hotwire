@@ -61,7 +61,7 @@ fastify.get('/', async (req, reply) => {
 })
 ```
 
-### `reply.render(filename, target, data)`
+### `reply.turboStream.*(filename, target, data)`
 
 Every turbo stream action is supported: `append`, `prepend`, `replace`, `update`, `remove`.
 It generates and send a turbo compatible fragment and configures the appropriate content type.
