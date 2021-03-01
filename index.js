@@ -25,11 +25,11 @@ async function hotwire (fastify, opts) {
   fastify.decorateReply('turboGenerate', {
     getter () {
       return {
-        append: (file, target, data) => turboSendSocket(this, 'append', file, target, data),
-        prepend: (file, target, data) => turboSendSocket(this, 'prepend', file, target, data),
-        replace: (file, target, data) => turboSendSocket(this, 'replace', file, target, data),
-        update: (file, target, data) => turboSendSocket(this, 'update', file, target, data),
-        remove: (file, target, data) => turboSendSocket(this, 'remove', file, target, data)
+        append: (file, target, data) => generate(this, 'append', file, target, data),
+        prepend: (file, target, data) => generate(this, 'prepend', file, target, data),
+        replace: (file, target, data) => generate(this, 'replace', file, target, data),
+        update: (file, target, data) => generate(this, 'update', file, target, data),
+        remove: (file, target, data) => generate(this, 'remove', file, target, data)
       }
     }
   })
@@ -49,7 +49,7 @@ async function hotwire (fastify, opts) {
     return that
   }
 
-  async function turboSendSocket (that, action, file, target, data) {
+  async function generate (that, action, file, target, data) {
     const html = await pool.runTask({ file: join(templates, file), data, fragment: true })
     return buildStream(action, target, html).replace(/\n/g, '').trim()
   }
