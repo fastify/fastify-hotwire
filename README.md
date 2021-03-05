@@ -5,7 +5,7 @@
 Do you enjoy writing applications with the [hotwire](http://hotwire.dev) pattern?
 We got you covered!
 
-This plugin adds all the necwessary utilis to Fastify for creating a fullstack application
+This plugin adds all the necessary utilities to Fastify for creating a fullstack application
 with Hotwire. Take a look at the [example](./example) folder to see it in action!
 
 ## Install
@@ -18,7 +18,7 @@ npm i fastify-hotwire
 
 Add the plugin to Fastify, with at least two options:
 
-- `templates`: the location of your folder with your replates
+- `templates`: the location of your folder with your templates
 - `filename`: the location of your html generator, any templating language is supported!
 
 ```js
@@ -41,7 +41,7 @@ module.exports = ({ file, data, fragment }) => {
 
 ### `reply.render(filename, data)`
 
-Gnerates the entire intial page, it calls the worker with `fragment: false`
+Generates the entire initial page, it calls the worker with `fragment: false`
 
 ```js
 fastify.get('/', async (req, reply) => {
