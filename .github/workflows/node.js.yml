@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          npm run test
+          npm test
 
   automerge:
     needs: test
