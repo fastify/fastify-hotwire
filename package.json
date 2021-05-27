@@ -37,7 +37,7 @@
     "fastify-formbody": "^5.0.0",
     "fastify-websocket": "^3.0.0",
     "mqemitter": "^4.4.1",
-    "pino-pretty": "^4.5.0",
+    "pino-pretty": "^5.0.0",
     "shortid": "^2.2.16",
     "standard": "^16.0.3",
     "superheroes": "^3.0.0",
