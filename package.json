@@ -44,13 +44,5 @@
     "svelte": "^3.44.0",
     "tap": "^15.0.10",
     "tsd": "^0.18.0"
-  },
-  "tap": {
-    "esm": false,
-    "ts": false,
-    "jsx": false,
-    "flow": false,
-    "coverage": false,
-    "jobs-auto": true
   }
 }

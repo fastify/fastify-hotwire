@@ -7,7 +7,7 @@ const Hotwire = require('./')
 
 test('Should render the entire page', async t => {
   const fastify = Fastify()
-  fastify.register(Hotwire, {
+  await fastify.register(Hotwire, {
     templates: join(__dirname, 'example', 'views'),
     filename: join(__dirname, 'example', 'worker.js')
   })
@@ -21,15 +21,15 @@ test('Should render the entire page', async t => {
     path: '/'
   })
 
-  t.strictEqual(response.statusCode, 200)
+  t.equal(response.statusCode, 200)
   t.match(response.headers, { 'content-type': 'text/html; charset=utf-8' })
-  t.true(response.payload.includes('foobar'))
+  t.ok(response.payload.includes('foobar'))
 })
 
 function runTurboStream (action) {
   test(`Should return a turbo fragment (${action})`, async t => {
     const fastify = Fastify()
-    fastify.register(Hotwire, {
+    await fastify.register(Hotwire, {
       templates: join(__dirname, 'example', 'views'),
       filename: join(__dirname, 'example', 'worker.js')
     })
@@ -53,16 +53,16 @@ function runTurboStream (action) {
       path: '/'
     })
 
-    t.strictEqual(response.statusCode, 200)
+    t.equal(response.statusCode, 200)
     t.match(response.headers, { 'content-type': 'text/vnd.turbo-stream.html; charset=utf-8' })
-    t.strictEqual(response.payload.replace(/\n/g, '').trim(), `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
+    t.equal(response.payload.replace(/\n/g, '').trim(), `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
   })
 }
 
 function runTurboGenerate (action) {
   test(`Should generate a turbo fragment (${action})`, async t => {
     const fastify = Fastify()
-    fastify.register(Hotwire, {
+    await fastify.register(Hotwire, {
       templates: join(__dirname, 'example', 'views'),
       filename: join(__dirname, 'example', 'worker.js')
     })
@@ -87,9 +87,9 @@ function runTurboGenerate (action) {
       path: '/'
     })
 
-    t.strictEqual(response.statusCode, 200)
+    t.equal(response.statusCode, 200)
     t.match(response.headers, { 'content-type': 'text/plain' })
-    t.strictEqual(response.payload, `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
+    t.equal(response.payload, `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
   })
 }
 
