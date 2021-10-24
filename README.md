@@ -26,7 +26,7 @@ Add the plugin to Fastify, with at least two options:
 
 ```js
 // in your fastify app
-fastify .register(require('fastify-hotwire'), {
+fastify.register(require('fastify-hotwire'), {
   templates: join(__dirname, 'views'),
   filename: join(__dirname, 'worker.js')
 })
