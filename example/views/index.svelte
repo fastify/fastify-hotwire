@@ -1,6 +1,6 @@
 <svelte:head>
   <title>demo app</title>
-  <script src="https://unpkg.com/@hotwired/turbo@7.0.0-beta.4/dist/turbo.es5-umd.js"></script>
+  <script src="https://unpkg.com/@hotwired/turbo@7.0.1/dist/turbo.es2017-umd.js"></script>
   <script>
     Turbo.connectStreamSource(new WebSocket(`ws://${document.location.host}/ws`))
   </script>
