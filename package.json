@@ -39,7 +39,7 @@
     "mqemitter": "^4.5.0",
     "pino-pretty": "^7.1.0",
     "shortid": "^2.2.16",
-    "standard": "^16.0.4",
+    "standard": "^17.0.0",
     "superheroes": "^3.0.0",
     "svelte": "^3.44.0",
     "tap": "^16.0.0",
