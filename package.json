@@ -1,6 +1,6 @@
 {
-  "name": "fastify-hotwire",
-  "version": "0.2.0",
+  "name": "@fastify/hotwire",
+  "version": "1.0.0",
   "description": "Use the Hotwire pattern with Fastify",
   "main": "index.js",
   "types": "index.d.ts",
@@ -44,5 +44,8 @@
     "svelte": "^3.44.0",
     "tap": "^16.0.0",
     "tsd": "^0.20.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
