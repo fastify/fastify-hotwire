@@ -30,12 +30,12 @@
     "piscina": "^3.1.0"
   },
   "devDependencies": {
+    "@fastify/cookie": "^6.0.0",
+    "@fastify/formbody": "^6.0.0",
+    "@fastify/websocket": "^5.0.0",
     "@hotwired/turbo": "^7.0.1",
     "@types/node": "^17.0.0",
     "fastify": "^3.22.1",
-    "fastify-cookie": "^5.3.1",
-    "fastify-formbody": "^5.1.0",
-    "fastify-websocket": "^4.0.0",
     "mqemitter": "^4.5.0",
     "pino-pretty": "^7.1.0",
     "shortid": "^2.2.16",
