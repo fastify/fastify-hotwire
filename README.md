@@ -1,7 +1,7 @@
-# fastify-hotwire
+# @fastify/hotwire
 
 ![CI](https://github.com/fastify/fastify-hotwire/workflows/CI/badge.svg)
-[![NPM version](https://img.shields.io/npm/v/fastify-hotwire.svg?style=flat)](https://www.npmjs.com/package/fastify-hotwire)
+[![NPM version](https://img.shields.io/npm/v/@fastify/hotwire.svg?style=flat)](https://www.npmjs.com/package/@fastify/hotwire)
 [![Known Vulnerabilities](https://snyk.io/test/github/fastify/fastify-hotwire/badge.svg)](https://snyk.io/test/github/fastify/fastify-hotwire)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
 
@@ -14,7 +14,7 @@ with Hotwire. Take a look at the [example](./example) folder to see it in action
 ## Install
 
 ```
-npm i fastify-hotwire
+npm i @fastify/hotwire
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ Add the plugin to Fastify, with at least two options:
 
 ```js
 // in your fastify app
-fastify.register(require('fastify-hotwire'), {
+fastify.register(require('@fastify/hotwire'), {
   templates: join(__dirname, 'views'),
   filename: join(__dirname, 'worker.js')
 })
