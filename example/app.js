@@ -19,9 +19,9 @@ const db = new Map()
 fastify
   // remember to configure the content security policy as well!
   .decorateRequest('user', null)
-  .register(require('fastify-cookie'), { secret: 'supersecret' })
-  .register(require('fastify-formbody'))
-  .register(require('fastify-websocket'), { clientTracking: true })
+  .register(require('@fastify/cookie'), { secret: 'supersecret' })
+  .register(require('@fastify/formbody'))
+  .register(require('@fastify/websocket'), { clientTracking: true })
   .register(require('..'), {
     templates: join(__dirname, 'views'),
     filename: join(__dirname, 'worker.js')
