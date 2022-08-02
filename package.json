@@ -6,7 +6,8 @@
   "types": "index.d.ts",
   "scripts": {
     "demo": "node example/app.js",
-    "test": "standard && tap test.js && tsd"
+    "lint": "standard",
+    "test": "tap test.js && tsd"
   },
   "repository": {
     "type": "git",
