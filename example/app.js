@@ -176,4 +176,4 @@ async function authorize (req, reply) {
   req.user = cookie.value
 }
 
-fastify.listen(3000, console.log)
+fastify.listen({ port: 3000 }, console.log)
