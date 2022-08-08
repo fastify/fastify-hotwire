@@ -1,5 +1,5 @@
-import fastify, {FastifyInstance, FastifyPluginCallback} from 'fastify'
-import hotwire, { FastifyHotwireOptions } from './'
+import fastify, {FastifyInstance} from 'fastify'
+import hotwire from '..'
 import { join } from 'path'
 import { expectType } from 'tsd'
 

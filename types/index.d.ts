@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { FastifyPluginCallback } from 'fastify'
+import { FastifyPluginAsync } from 'fastify'
 
 declare module 'fastify' {
   interface FastifyReply {
@@ -29,7 +29,7 @@ export interface FastifyHotwireOptions {
   filename : string
 }
 
-declare const fastifyHotwire: FastifyPluginCallback<NonNullable<FastifyHotwireOptions>>
+declare const fastifyHotwire: FastifyPluginAsync<NonNullable<FastifyHotwireOptions>>
 
 export default fastifyHotwire
 export { fastifyHotwire }
