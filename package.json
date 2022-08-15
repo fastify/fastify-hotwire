@@ -38,7 +38,7 @@
     "@types/node": "^18.0.0",
     "fastify": "^4.3.0",
     "mqemitter": "^5.0.0",
-    "pino-pretty": "^8.0.0",
+    "pino-pretty": "^9.0.0",
     "shortid": "^2.2.16",
     "standard": "^17.0.0",
     "superheroes": "^3.0.0",
