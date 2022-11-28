@@ -7,7 +7,9 @@
   "scripts": {
     "demo": "node example/app.js",
     "lint": "standard",
-    "test": "tap test.js && tsd"
+    "test": "npm run test:unit && npm run test:typescript",
+    "test:typescript": "tsd",
+    "test:unit": "tap"
   },
   "repository": {
     "type": "git",
