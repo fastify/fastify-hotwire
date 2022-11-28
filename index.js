@@ -4,7 +4,7 @@ const { join } = require('path')
 const fp = require('fastify-plugin')
 const Piscina = require('piscina')
 
-async function hotwire (fastify, opts) {
+async function fastifyHotwire (fastify, opts) {
   const { templates } = opts
   delete opts.templates
 
@@ -65,6 +65,8 @@ function buildStream (action, target, content) {
 `
 }
 
-module.exports = fp(hotwire, {
+module.exports = fp(fastifyHotwire, {
   name: '@fastify/hotwire'
 })
+module.exports.default = fastifyHotwire
+module.exports.fastifyHotwire = fastifyHotwire
