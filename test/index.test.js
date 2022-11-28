@@ -3,13 +3,13 @@
 const { join } = require('path')
 const { test } = require('tap')
 const Fastify = require('fastify')
-const Hotwire = require('./')
+const Hotwire = require('..')
 
 test('Should render the entire page', async t => {
   const fastify = Fastify()
   await fastify.register(Hotwire, {
-    templates: join(__dirname, 'example', 'views'),
-    filename: join(__dirname, 'example', 'worker.js')
+    templates: join(__dirname, '..', 'example', 'views'),
+    filename: join(__dirname, '..', 'example', 'worker.js')
   })
 
   fastify.get('/', async (req, reply) => {
@@ -30,8 +30,8 @@ function runTurboStream (action) {
   test(`Should return a turbo fragment (${action})`, async t => {
     const fastify = Fastify()
     await fastify.register(Hotwire, {
-      templates: join(__dirname, 'example', 'views'),
-      filename: join(__dirname, 'example', 'worker.js')
+      templates: join(__dirname, '..', 'example', 'views'),
+      filename: join(__dirname, '..', 'example', 'worker.js')
     })
 
     fastify.get('/', async (req, reply) => {
@@ -63,8 +63,8 @@ function runTurboGenerate (action) {
   test(`Should generate a turbo fragment (${action})`, async t => {
     const fastify = Fastify()
     await fastify.register(Hotwire, {
-      templates: join(__dirname, 'example', 'views'),
-      filename: join(__dirname, 'example', 'worker.js')
+      templates: join(__dirname, '..', 'example', 'views'),
+      filename: join(__dirname, '..', 'example', 'worker.js')
     })
 
     fastify.get('/', async (req, reply) => {
