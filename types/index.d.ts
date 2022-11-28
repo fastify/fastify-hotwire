@@ -24,12 +24,17 @@ declare module 'fastify' {
   }
 }
 
-export interface FastifyHotwireOptions {
-  templates: string
-  filename : string
+type FastifyHotwire = FastifyPluginAsync<NonNullable<fastifyHotwire.FastifyHotwireOptions>>
+
+declare namespace fastifyHotwire {
+  export interface FastifyHotwireOptions {
+    templates: string
+    filename : string
+  }
+
+  export const fastifyHotwire: FastifyHotwire
+  export { fastifyHotwire as default }
 }
 
-declare const fastifyHotwire: FastifyPluginAsync<NonNullable<FastifyHotwireOptions>>
-
-export default fastifyHotwire
-export { fastifyHotwire }
+declare function fastifyHotwire(...params: Parameters<FastifyHotwire>): ReturnType<FastifyHotwire>
+export = fastifyHotwire
