@@ -35,7 +35,7 @@
   "devDependencies": {
     "@fastify/cookie": "^8.0.0",
     "@fastify/formbody": "^7.0.0",
-    "@fastify/websocket": "^7.0.0",
+    "@fastify/websocket": "^8.0.0",
     "@hotwired/turbo": "^7.0.1",
     "@types/node": "^18.0.0",
     "fastify": "^4.3.0",
