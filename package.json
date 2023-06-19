@@ -30,7 +30,7 @@
   "homepage": "https://github.com/fastify/fastify-hotwire#readme",
   "dependencies": {
     "fastify-plugin": "^4.0.0",
-    "piscina": "^3.1.0"
+    "piscina": "^4.0.0"
   },
   "devDependencies": {
     "@fastify/cookie": "^8.0.0",
