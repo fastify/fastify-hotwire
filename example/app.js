@@ -107,6 +107,7 @@ fastify.route({
 })
 
 async function onDeleteMessage (req, reply) {
+  // in production ensure to validate or sanitize the user provided id
   const { id } = req.params
   req.log.info(`deleting message ${id}`)
   if (!db.has(id)) {
