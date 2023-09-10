@@ -1,6 +1,6 @@
 'use strict'
 
-const { join } = require('path')
+const { join } = require('node:path')
 const { test } = require('tap')
 const Fastify = require('fastify')
 const Hotwire = require('..')

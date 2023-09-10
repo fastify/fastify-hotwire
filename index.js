@@ -1,6 +1,6 @@
 'use strict'
 
-const { join } = require('path')
+const { join } = require('node:path')
 const fp = require('fastify-plugin')
 const Piscina = require('piscina')
 
