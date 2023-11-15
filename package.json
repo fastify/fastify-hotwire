@@ -34,7 +34,7 @@
     "piscina": "^4.0.0"
   },
   "devDependencies": {
-    "@fastify/cookie": "^8.0.0",
+    "@fastify/cookie": "^9.2.0",
     "@fastify/formbody": "^7.0.0",
     "@fastify/websocket": "^8.0.0",
     "@hotwired/turbo": "^7.0.1",
