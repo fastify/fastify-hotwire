@@ -3,7 +3,12 @@
 const { join } = require('node:path')
 const fastify = require('fastify')({
   logger: {
-    prettyPrint: true
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        colorize: true
+      }
+    }
   }
 })
 const superheroes = require('superheroes')
