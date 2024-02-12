@@ -37,7 +37,7 @@
     "@fastify/cookie": "^9.2.0",
     "@fastify/formbody": "^7.0.0",
     "@fastify/websocket": "^8.0.0",
-    "@hotwired/turbo": "^7.0.1",
+    "@hotwired/turbo": "^8.0.2",
     "@types/node": "^20.1.0",
     "fastify": "^4.3.0",
     "mqemitter": "^5.0.0",
