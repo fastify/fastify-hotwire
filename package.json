@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/fastify/fastify-hotwire#readme",
   "dependencies": {
-    "fastify-plugin": "^4.0.0",
+    "fastify-plugin": "^5.0.0-pre.fv5.1",
     "piscina": "^4.0.0"
   },
   "devDependencies": {
-    "@fastify/cookie": "^9.2.0",
-    "@fastify/formbody": "^7.0.0",
-    "@fastify/websocket": "^8.0.0",
+    "@fastify/cookie": "^10.0.0-pre.fv5.1",
+    "@fastify/formbody": "^8.0.0-pre.fv5.1",
+    "@fastify/websocket": "^9.0.0-pre.fv5.1",
     "@hotwired/turbo": "^7.0.1",
     "@types/node": "^20.1.0",
-    "fastify": "^4.3.0",
+    "fastify": "^5.0.0-alpha.3",
     "mqemitter": "^5.0.0",
     "pino-pretty": "^10.0.0",
     "shortid": "^2.2.16",
