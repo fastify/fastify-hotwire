@@ -39,7 +39,7 @@
     "@fastify/websocket": "^9.0.0",
     "@hotwired/turbo": "^7.0.1",
     "@types/node": "^20.1.0",
-    "fastify": "^5.0.0-alpha.4",
+    "fastify": "^5.0.0",
     "mqemitter": "^5.0.0",
     "pino-pretty": "^10.0.0",
     "shortid": "^2.2.16",
