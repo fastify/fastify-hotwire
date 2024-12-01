@@ -10,7 +10,7 @@
     "lint": "standard",
     "test": "npm run test:unit && npm run test:typescript",
     "test:typescript": "tsd",
-    "test:unit": "tap"
+    "test:unit": "c8 -100 node --test"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "@fastify/websocket": "^11.0.1",
     "@hotwired/turbo": "^8.0.10",
     "@types/node": "^22.5.5",
+    "c8": "^10.1.2",
     "fastify": "^5.0.0",
     "mqemitter": "^6.0.2",
     "pino-pretty": "^13.0.0",
@@ -46,7 +47,6 @@
     "standard": "^17.0.0",
     "superheroes": "^4.0.0",
     "svelte": "^3.44.0",
-    "tap": "^16.0.0",
     "tsd": "^0.31.2"
   },
   "publishConfig": {

@@ -1,7 +1,7 @@
 'use strict'
 
 const { join } = require('node:path')
-const { test } = require('tap')
+const { test } = require('node:test')
 const Fastify = require('fastify')
 const Hotwire = require('..')
 
@@ -21,9 +21,9 @@ test('Should render the entire page', async t => {
     path: '/'
   })
 
-  t.equal(response.statusCode, 200)
-  t.match(response.headers, { 'content-type': 'text/html; charset=utf-8' })
-  t.ok(response.payload.includes('foobar'))
+  t.assert.strictEqual(response.statusCode, 200)
+  t.assert.strictEqual(response.headers['content-type'], 'text/html; charset=utf-8')
+  t.assert.ok(response.payload.includes('foobar'))
 })
 
 function runTurboStream (action) {
@@ -53,9 +53,9 @@ function runTurboStream (action) {
       path: '/'
     })
 
-    t.equal(response.statusCode, 200)
-    t.match(response.headers, { 'content-type': 'text/vnd.turbo-stream.html; charset=utf-8' })
-    t.equal(response.payload.replace(/\n/g, '').trim(), `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
+    t.assert.strictEqual(response.statusCode, 200)
+    t.assert.strictEqual(response.headers['content-type'], 'text/vnd.turbo-stream.html; charset=utf-8')
+    t.assert.strictEqual(response.payload.replace(/\n/g, '').trim(), `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
   })
 }
 
@@ -87,9 +87,9 @@ function runTurboGenerate (action) {
       path: '/'
     })
 
-    t.equal(response.statusCode, 200)
-    t.match(response.headers, { 'content-type': 'text/plain' })
-    t.equal(response.payload, `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
+    t.assert.strictEqual(response.statusCode, 200)
+    t.assert.strictEqual(response.headers['content-type'], 'text/plain')
+    t.assert.strictEqual(response.payload, `<turbo-stream action="${action}" target="messages">    <template>      <turbo-frame id="message_frame_unique"><p><strong>foobar:</strong> hello world</p>  <form action="/message/unique/delete" method="POST"><button type="submit">Remove</button></form></turbo-frame>    </template>  </turbo-stream>`)
   })
 }
 
