@@ -46,7 +46,7 @@
     "shortid": "^2.2.16",
     "standard": "^17.0.0",
     "superheroes": "^4.0.0",
-    "svelte": "^3.44.0",
+    "svelte": "^5.3.1",
     "tsd": "^0.31.2"
   },
   "publishConfig": {
