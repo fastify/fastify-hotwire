@@ -1,4 +1,4 @@
-import fastify, {FastifyInstance} from 'fastify'
+import fastify, { FastifyInstance } from 'fastify'
 import hotwire from '..'
 import { join } from 'path'
 import { expectType } from 'tsd'

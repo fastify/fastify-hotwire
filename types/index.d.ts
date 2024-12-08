@@ -29,12 +29,12 @@ type FastifyHotwire = FastifyPluginAsync<NonNullable<fastifyHotwire.FastifyHotwi
 declare namespace fastifyHotwire {
   export interface FastifyHotwireOptions {
     templates: string
-    filename : string
+    filename: string
   }
 
   export const fastifyHotwire: FastifyHotwire
   export { fastifyHotwire as default }
 }
 
-declare function fastifyHotwire(...params: Parameters<FastifyHotwire>): ReturnType<FastifyHotwire>
+declare function fastifyHotwire (...params: Parameters<FastifyHotwire>): ReturnType<FastifyHotwire>
 export = fastifyHotwire
