@@ -7,7 +7,8 @@
   "types": "types/index.d.ts",
   "scripts": {
     "demo": "node example/app.js",
-    "lint": "standard",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "npm run test:unit && npm run test:typescript",
     "test:typescript": "tsd",
     "test:unit": "c8 -100 node --test"
@@ -42,9 +43,9 @@
     "c8": "^10.1.2",
     "fastify": "^5.0.0",
     "mqemitter": "^6.0.2",
+    "neostandard": "^0.11.9",
     "pino-pretty": "^13.0.0",
     "shortid": "^2.2.16",
-    "standard": "^17.0.0",
     "superheroes": "^4.0.0",
     "svelte": "^3.44.0",
     "tsd": "^0.31.2"

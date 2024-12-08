@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/fastify/fastify-hotwire/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/fastify/fastify-hotwire/actions/workflows/ci.yml)
 [![NPM version](https://img.shields.io/npm/v/@fastify/hotwire.svg?style=flat)](https://www.npmjs.com/package/@fastify/hotwire)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
+[![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 
 Do you enjoy writing applications with the [hotwire](http://hotwire.dev) pattern?
 We got you covered!
