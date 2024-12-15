@@ -1,6 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify'
 import hotwire from '..'
-import { join } from 'path'
+import { join } from 'node:path'
 import { expectType } from 'tsd'
 
 const app: FastifyInstance = fastify()
