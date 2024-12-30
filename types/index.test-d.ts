@@ -9,11 +9,11 @@ app.register(hotwire, {
   filename: join(__dirname, 'example', 'worker.js')
 })
 
-app.get('/stream', async (req, reply) => {
+app.get('/stream', async (_req, reply) => {
   return reply.turboStream.append('file', 'target', { hello: 'world' })
 })
 
-app.get('/generate', async (req, reply) => {
+app.get('/generate', async (_req, reply) => {
   const fragment = await reply.turboGenerate.append('file', 'target', { hello: 'world' })
   expectType<string>(fragment)
 })

@@ -49,7 +49,7 @@ async function fastifyHotwire (fastify, opts) {
     return that
   }
 
-  async function generate (that, action, file, target, data) {
+  async function generate (_that, action, file, target, data) {
     const html = await pool.runTask({ file: join(templates, file), data, fragment: true })
     return buildStream(action, target, html).replace(/\n/g, '').trim()
   }

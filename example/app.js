@@ -33,13 +33,13 @@ fastify
   })
 
 // every time we have a new message, let's broadcast it
-emitter.on('new-message', (message, cb) => {
+emitter.on('new-message', (message, _cb) => {
   for (const socket of fastify.websocketServer.clients.values()) {
     socket.send(message.payload)
   }
 })
 
-emitter.on('delete-message', (message, cb) => {
+emitter.on('delete-message', (message, _cb) => {
   for (const socket of fastify.websocketServer.clients.values()) {
     socket.send(message.payload)
   }
@@ -47,7 +47,7 @@ emitter.on('delete-message', (message, cb) => {
 
 // render the initial page and populate it
 // with the current content
-fastify.get('/', async (req, reply) => {
+fastify.get('/', async (_req, reply) => {
   const messages = []
   for (const [id, message] of db.entries()) {
     messages.push({ id, text: message.text, user: message.user })
@@ -156,12 +156,12 @@ fastify.route({
   handler: onAckToast
 })
 
-async function onAckToast (req, reply) {
+async function onAckToast (_req, reply) {
   return reply.turboStream.remove('toast.svelte', 'toast')
 }
 
 // websocket handler used by turbo for handling realtime communications
-fastify.get('/ws', { websocket: true }, (connection, req) => {
+fastify.get('/ws', { websocket: true }, (_connection, req) => {
   req.log.info('new websocket connection')
 })
 
