@@ -12,7 +12,7 @@ test('Should render the entire page', async t => {
     filename: join(__dirname, '..', 'example', 'worker.js')
   })
 
-  fastify.get('/', async (req, reply) => {
+  fastify.get('/', async (_req, reply) => {
     return reply.render('index.svelte', { messages: [], username: 'foobar' })
   })
 
@@ -34,7 +34,7 @@ function runTurboStream (action) {
       filename: join(__dirname, '..', 'example', 'worker.js')
     })
 
-    fastify.get('/', async (req, reply) => {
+    fastify.get('/', async (_req, reply) => {
       return reply.turboStream[action](
         'message.svelte',
         'messages',
@@ -67,7 +67,7 @@ function runTurboGenerate (action) {
       filename: join(__dirname, '..', 'example', 'worker.js')
     })
 
-    fastify.get('/', async (req, reply) => {
+    fastify.get('/', async (_req, reply) => {
       reply.type('text/plain')
       return reply.turboGenerate[action](
         'message.svelte',
