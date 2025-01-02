@@ -5,7 +5,7 @@
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 
 Do you enjoy writing applications with the [hotwire](http://hotwire.dev) pattern?
-We got you covered!
+We have got you covered!
 
 This plugin adds all the necessary utilities to Fastify for creating a fullstack application
 with Hotwire. Take a look at the [example](./example) folder to see it in action!
@@ -21,7 +21,7 @@ npm i @fastify/hotwire
 Add the plugin to Fastify, with at least two options:
 
 - `templates`: the location of your folder with your templates
-- `filename`: the location of your html generator, any templating language is supported!
+- `filename`: the location of your HTML generator, any templating language is supported!
 
 ```js
 // in your fastify app
@@ -76,4 +76,4 @@ fastify.get('/', async (req, reply) => {
 
 ## License
 
-[MIT](./LICENSE)
+Licensed under [MIT](./LICENSE).
