@@ -1,7 +1,7 @@
 import fastify, { FastifyInstance } from 'fastify'
 import hotwire from '..'
 import { join } from 'node:path'
-import { expectType } from 'tsd'
+import { expect } from 'tstyche'
 
 const app: FastifyInstance = fastify()
 app.register(hotwire, {
@@ -10,10 +10,14 @@ app.register(hotwire, {
 })
 
 app.get('/stream', async (_req, reply) => {
+  expect(
+    reply.turboStream.append('file', 'target', { hello: 'world' })
+  ).type.toBeAssignableTo<typeof reply>()
+
   return reply.turboStream.append('file', 'target', { hello: 'world' })
 })
 
 app.get('/generate', async (_req, reply) => {
   const fragment = await reply.turboGenerate.append('file', 'target', { hello: 'world' })
-  expectType<string>(fragment)
+  expect(fragment).type.toBe<string>()
 })

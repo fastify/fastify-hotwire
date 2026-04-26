@@ -10,7 +10,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "test": "npm run test:unit && npm run test:typescript",
-    "test:typescript": "tsd",
+    "test:typescript": "tstyche",
     "test:unit": "c8 -100 node --test"
   },
   "repository": {
@@ -78,7 +78,7 @@
     "shortid": "^2.2.16",
     "superheroes": "^4.0.0",
     "svelte": "^3.44.0",
-    "tsd": "^0.33.0"
+    "tstyche": "^7.0.0"
   },
   "publishConfig": {
     "access": "public"
