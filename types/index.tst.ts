@@ -12,7 +12,7 @@ app.register(hotwire, {
 app.get('/stream', async (_req, reply) => {
   expect(
     reply.turboStream.append('file', 'target', { hello: 'world' })
-  ).type.toBeAssignableTo<typeof reply>()
+  ).type.toBe(reply)
 
   return reply.turboStream.append('file', 'target', { hello: 'world' })
 })
