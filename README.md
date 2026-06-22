@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/@fastify/hotwire.svg?style=flat)](https://www.npmjs.com/package/@fastify/hotwire)
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-brightgreen?style=flat)](https://github.com/neostandard/neostandard)
 
-Do you enjoy writing applications with the [hotwire](http://hotwire.dev) pattern?
+Do you enjoy writing applications with the [hotwire](https://hotwire.dev) pattern?
 We have got you covered!
 
 This plugin adds all the necessary utilities to Fastify for creating a fullstack application
