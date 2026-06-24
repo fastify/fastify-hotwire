@@ -14,7 +14,7 @@ const fastify = require('fastify')({
 const superheroes = require('superheroes')
 const shortid = require('shortid')
 // you can use any queue system for delivering a message
-// across multiple server instances, see http://npm.im/mqemitter.
+// across multiple server instances, see https://www.npmjs.com/package/mqemitter.
 const mq = require('mqemitter')
 const emitter = mq({ concurrency: 5 })
 
