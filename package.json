@@ -60,8 +60,8 @@
     }
   ],
   "dependencies": {
-    "fastify-plugin": "^5.0.0",
-    "piscina": "^4.0.0"
+    "fastify-plugin": "^6.0.0",
+    "piscina": "^5.2.0"
   },
   "devDependencies": {
     "@fastify/cookie": "^11.0.1",
