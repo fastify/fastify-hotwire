@@ -36,21 +36,29 @@ async function fastifyHotwire (fastify, opts) {
 
   async function render (file, data) {
     file = join(templates, file)
-    const html = await pool.runTask({ file, data, fragment: false })
+    const html = await pool.run({ file, data, fragment: false })
     this.type('text/html; charset=utf-8')
     this.send(html)
     return this
   }
 
   async function turboSend (that, action, file, target, data) {
-    const html = await pool.runTask({ file: join(templates, file), data, fragment: true })
+    const html = await pool.run({
+      file: join(templates, file),
+      data,
+      fragment: true
+    })
     that.type('text/vnd.turbo-stream.html; charset=utf-8')
     that.send(buildStream(action, target, html.trim()))
     return that
   }
 
   async function generate (_that, action, file, target, data) {
-    const html = await pool.runTask({ file: join(templates, file), data, fragment: true })
+    const html = await pool.run({
+      file: join(templates, file),
+      data,
+      fragment: true
+    })
     return buildStream(action, target, html).replace(/\n/g, '').trim()
   }
 }
