@@ -11,7 +11,7 @@ const fastify = require('fastify')({
     }
   }
 })
-const superheroes = require('superheroes')
+const { randomSuperhero } = require('superheroes')
 const shortid = require('shortid')
 // you can use any queue system for delivering a message
 // across multiple server instances, see https://www.npmjs.com/package/mqemitter.
@@ -47,21 +47,27 @@ emitter.on('delete-message', (message, _cb) => {
 
 // render the initial page and populate it
 // with the current content
-fastify.get('/', async (_req, reply) => {
+fastify.get('/', async (req, reply) => {
   const messages = []
   for (const [id, message] of db.entries()) {
     messages.push({ id, text: message.text, user: message.user })
   }
 
-  // generate the user
-  const username = `${superheroes.random()}-${shortid.generate()}`
-  reply.setCookie('user', username, {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    sameSite: true,
-    path: '/',
-    signed: true
-  })
+  const existing = req.cookies.user && req.unsignCookie(req.cookies.user)
+  const username =
+    existing && existing.valid
+      ? existing.value
+      : `${randomSuperhero()}-${shortid.generate()}`
+
+  if (!existing || !existing.valid) {
+    reply.setCookie('user', username, {
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+      sameSite: true,
+      path: '/',
+      signed: true
+    })
+  }
 
   return reply.render('index.svelte', { messages, username })
 })
@@ -99,7 +105,7 @@ async function onCreateMessage (req, reply) {
     payload
   })
 
-  return { acknowledged: true }
+  return reply.redirect('/')
 }
 
 // delete a message, users can only delete
@@ -116,20 +122,16 @@ async function onDeleteMessage (req, reply) {
   const { id } = req.params
   req.log.info(`deleting message ${id}`)
   if (!db.has(id)) {
-    return reply.turboStream.replace(
-      'toast.svelte',
-      'toast',
-      { text: `The message with id ${id} does not exists` }
-    )
+    return reply.turboStream.replace('toast.svelte', 'toast', {
+      text: `The message with id ${id} does not exists`
+    })
   }
 
   const message = db.get(id)
   if (message.user !== req.user) {
-    return reply.turboStream.replace(
-      'toast.svelte',
-      'toast',
-      { text: 'You can\'t delete a message from another user' }
-    )
+    return reply.turboStream.replace('toast.svelte', 'toast', {
+      text: "You can't delete a message from another user"
+    })
   }
 
   db.delete(id)
@@ -160,9 +162,10 @@ async function onAckToast (_req, reply) {
   return reply.turboStream.remove('toast.svelte', 'toast')
 }
 
-// websocket handler used by turbo for handling realtime communications
-fastify.get('/ws', { websocket: true }, (_connection, req) => {
-  req.log.info('new websocket connection')
+fastify.register(async function (fastify) {
+  fastify.get('/ws', { websocket: true }, (_socket, req) => {
+    req.log.info('new websocket connection')
+  })
 })
 
 // authenticate client requests
@@ -182,4 +185,4 @@ async function authorize (req, reply) {
   req.user = cookie.value
 }
 
-fastify.listen({ port: 3000 }, console.log)
+fastify.listen({ port: 3000 })
